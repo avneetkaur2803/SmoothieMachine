@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smoothie Order Form</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to CSS file -->
+</head>
+<body>
+    <h1>Smoothie Order Form</h1>
+
+    <form id="smoothieForm">
+        <label for="fruit">Choose a fruit:</label>
+        <select id="fruit">
+            <option value="banana">Banana</option>
+            <option value="strawberry">Strawberry</option>
+            <option value="blueberry">Blueberry</option>
+            <option value="mango">Mango</option>
+        </select>
+
+        <label for="size">Choose a size:</label>
+        <select id="size">
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+        </select>
+
+        <label for="extras">Choose extras (select multiple):</label>
+        <select id="extras" multiple>
+            <option value="protein">Protein</option>
+            <option value="spinach">Spinach</option>
+            <option value="yogurt">Yogurt</option>
+            <option value="almondMilk">Almond Milk</option>
+        </select>
+
+        <button type="submit">Order Smoothie</button>
+    </form>
+
+    <div id="orderSummary"></div> <!-- Display the smoothie order summary here -->
+
+    <script src="script.js"></script> <!-- Link to JavaScript file -->
+</body>
+</html>
