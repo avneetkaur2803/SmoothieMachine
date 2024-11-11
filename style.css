@@ -1,55 +1,105 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
+body, html {
     margin: 0;
     padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #f8b400, #ff5e5e, #8e44ad, #28b463); /* Fruity Gradient */
+    background-size: cover; 
+    color: rgb(12, 0, 0); 
 }
 
-h1 {
-    text-align: center;
-    color: #333;
-    padding-top: 20px;
-}
-
-form {
+/* Center the smoothie order form on the page */
+.container {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;  
     flex-direction: column;
-    width: 300px;
-    margin: 0 auto;
     padding: 20px;
-    background-color: #fff;
+    overflow-y: auto;  /* Allow scrolling if content overflows */
+    position: relative; /* Ensures the background stays fixed behind the content */
+    z-index: 0;
+}
+
+/* Style for the smoothie form */
+form {
+    width: 100%;
+    max-width: 600px; 
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #110101;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.8); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
 
-label {
-    margin-top: 10px;
-}
-
-select, button {
+/* Styling input fields and select elements */
+input[type="text"], select, button {
+    width: 100%;
     padding: 10px;
-    margin-top: 10px;
-    border-radius: 4px;
+    margin-bottom: 10px;
+    border-radius: 5px;
     border: 1px solid #ccc;
 }
 
+/* Button styling */
 button {
     background-color: #4CAF50;
     color: white;
+    border: none;
     cursor: pointer;
-    font-weight: bold;
+    font-size: 16px;
 }
 
-button:hover {
-    background-color: #45a049;
+/* Style the smoothie description and image container */
+#smoothieSummary {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    margin-top: 20px;
+    display: block;
+    z-index: 1;
 }
 
-#orderSummary {
-    margin-top: 30px;
-    padding: 20px;
-    background-color: #e9ecef;
+/* Ensures the image is responsive and keeps aspect ratio */
+#smoothieImage {
+    width: 100%;  
+    height: auto;  
+    max-width: 400px;  
     border-radius: 8px;
-    width: 60%;
-    margin-left: auto;
-    margin-right: auto;
+    margin-bottom: 20px;  
+}
+
+
+#smoothieDescription {
+    margin-top: 15px;
+    font-size: 1.2em;
+}
+
+
+h3 {
+    font-size: 2em;  /* Larger font size for title */
+    margin-bottom: 1px;  /* Add space below the title */
+    text-align: center;
+}
+
+/* Responsive typography */
+h3 {
+    font-size: 2em;  
+}
+
+/* Media query for smaller screens (phones) */
+@media (max-width: 600px) {
+    h3 {
+        font-size: 1.5em; 
+    }
+
+    form {
+        width: 90%;  
+    }
+
+    #smoothieSummary {
+        width: 100%;
+        padding: 10px;
+    }
 }
