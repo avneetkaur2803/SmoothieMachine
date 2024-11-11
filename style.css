@@ -1,0 +1,105 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #f8b400, #ff5e5e, #8e44ad, #28b463); /* Fruity Gradient */
+    background-size: cover; 
+    color: rgb(12, 0, 0); 
+}
+
+/* Center the smoothie order form on the page */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;  
+    flex-direction: column;
+    padding: 20px;
+    overflow-y: auto;  /* Allow scrolling if content overflows */
+    position: relative; /* Ensures the background stays fixed behind the content */
+    z-index: 0;
+}
+
+/* Style for the smoothie form */
+form {
+    width: 100%;
+    max-width: 600px; 
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #110101;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.8); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+/* Styling input fields and select elements */
+input[type="text"], select, button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Button styling */
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Style the smoothie description and image container */
+#smoothieSummary {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    margin-top: 20px;
+    display: block;
+    z-index: 1;
+}
+
+/* Ensures the image is responsive and keeps aspect ratio */
+#smoothieImage {
+    width: 100%;  
+    height: auto;  
+    max-width: 400px;  
+    border-radius: 8px;
+    margin-bottom: 20px;  
+}
+
+
+#smoothieDescription {
+    margin-top: 15px;
+    font-size: 1.2em;
+}
+
+
+h3 {
+    font-size: 2em;  /* Larger font size for title */
+    margin-bottom: 1px;  /* Add space below the title */
+    text-align: center;
+}
+
+/* Responsive typography */
+h3 {
+    font-size: em;  
+}
+
+/* Media query for smaller screens (phones) */
+@media (max-width: 600px) {
+    h3 {
+        font-size: 1.5em; 
+    }
+
+    form {
+        width: 90%;  
+    }
+
+    #smoothieSummary {
+        width: 100%;
+        padding: 10px;
+    }
+}

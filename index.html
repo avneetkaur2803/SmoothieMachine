@@ -1,43 +1,128 @@
+INDEX.HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smoothie Order Form</title>
-    <link rel="stylesheet" href="style.css"> <!-- Link to CSS file -->
+    <title>Smoothie Order</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Smoothie Order Form</h1>
+    <div class="container">
+        <h1>Order Your Smoothie</h1>
+        
+        <!-- Smoothie Order Form -->
+        <form id="smoothieForm">
+            <label for="fruit">Choose a fruit:</label>
+            <select id="fruit" required>
+                <option value="mango">Mango</option>
+                <option value="strawberry">Strawberry</option>
+                <option value="orange">Orange</option>
+                <option value="banana">Banana</option>
+    
+            </select>
 
-    <form id="smoothieForm">
-        <label for="fruit">Choose a fruit:</label>
-        <select id="fruit">
-            <option value="mango">Mango</option>
-            <option value="strawberry">Strawberry</option>
-            <option value="orange">Orange</option>
-            <option value="banana">Banana</option>
-        </select>
-
-        <label for="size">Choose a size:</label>
-        <select id="size">
-            <option value="small">Small($5.00)</option>
+            <label for="size">Choose a size:</label>
+            <select id="size" required>
+                <option value="small">Small($5.00)</option>
             <option value="medium">Medium($7.00)</option>
             <option value="large">Large(9.00)</option>
-        </select>
 
-        <label for="extras">Choose extras (select multiple):</label>
-        <select id="extras" multiple>
-            <option value="cashews">Cashews</option>
-            <option value="peanuts">Peanuts</option>
-            <option value="yogurt">Yogurt</option>
-            <option value="milk">Milk</option>
-        </select>
+            </select>
 
-        <button type="submit">Order Smoothie</button>
-    </form>
+            <label for="extras">Choose extras:</label>
+            <select id="extras" multiple>
+                <option value="cashews">Cashews($1.50)</option>
+                <option value="peanuts">Peanuts($1.50)</option>
+                <option value="yogurt">Yogurt($1.50)</option>
+                <option value="milk">Milk($1.50)</option>
+            </select>
 
-    <div id="orderSummary"></div> <!-- smoothie order summary  -->
+            <button type="submit">Order Smoothie</button>
+        </form>
 
-    <script src="script.js"></script> <!-- Link to JavaScript file -->
+        <div id="orderSummary"></div>
+        <img id="smoothieImage" src="images/SmoothieImage.jpg" alt="Smoothie Image" />
+
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
+
+
+
+
+SCRIPT.JS
+
+// Smoothie class definition
+class Smoothie {
+    constructor(fruit, size, extras) {
+        this.fruit = fruit;
+        this.size = size;
+        this.extras = extras;
+        this.price = this.calculatePrice();
+        this.imageUrl = this.getImageUrl();
+    }
+
+    calculatePrice() {
+        let basePrice = 0;
+
+        // Set base price depending on size
+        if (this.size === 'small') {
+            basePrice = 5;
+        } else if (this.size === 'medium') {
+            basePrice = 7;
+        } else if (this.size === 'large') {
+            basePrice = 9;
+        }
+
+        // Add extras cost
+        let extrasPrice = this.extras.length * 1.5;
+        return basePrice + extrasPrice;
+    }
+
+    getDescription() {
+        return `
+            <h3>Your Smoothie Order:</h3>
+            <p><strong>Fruit:</strong> ${this.fruit}</p>
+            <p><strong>Size:</strong> ${this.size}</p>
+            <p><strong>Extras:</strong> ${this.extras.join(', ')}</p>
+            <p><strong>Total Price:</strong> $${this.price.toFixed(2)}</p>
+        `;
+    }
+
+    getImageUrl() {
+        switch (this.fruit) {
+            case 'mango':
+                return 'images/MangoSmoothie.jpg';
+            case 'strawberry':
+                return 'images/StrawberrySmoothie.jpg';
+            case 'orange':
+                return 'images/OrangeSmoothie.jpg';
+            case 'banana':
+                    return 'images/BananaSmoothie.jpg';
+            
+            default:
+                return 'images/MangoSmoothie.jpg';
+        }
+    }
+}
+
+// Handle form submission and display smoothie order details
+document.getElementById('smoothieForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const fruit = document.getElementById('fruit').value;
+    const size = document.getElementById('size').value;
+    const extras = Array.from(document.getElementById('extras').selectedOptions).map(option => option.value);
+
+    const smoothie = new Smoothie(fruit, size, extras);
+
+    // Display smoothie details
+    document.getElementById('orderSummary').innerHTML = smoothie.getDescription();
+    document.getElementById('smoothieImage').src = smoothie.imageUrl;
+});
+
+
+

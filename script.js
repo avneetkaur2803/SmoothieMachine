@@ -67,3 +67,4 @@ document.getElementById('smoothieForm').addEventListener('submit', function(even
     document.getElementById('smoothieImage').src = smoothie.imageUrl;
 });
 
+
